@@ -11,10 +11,12 @@ import { User } from './user.model';
 })
 export class UserComponent {
   @Input() user!: User
+  @Input() selected: boolean = false
   @Output() select = new EventEmitter<string>()
 
   onSelectUser() {
     this.select.emit(this.user.id)
+    this.selected = true
   }
 
   get ImagePath() {
