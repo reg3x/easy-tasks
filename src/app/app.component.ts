@@ -11,16 +11,17 @@ import { TasksComponent } from "./tasks/tasks.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  selectedUserId = 'u1'
   users = DUMMY_USERS
+  selectedUserId?: string 
 
   get selectedUser(){
-    return this.users.find((user) =>{user.id==this.selectedUserId})!
+    return this.users.find((user) => user.id === this.selectedUserId)
   }
 
   onSelectUser(id: string){
-    console.log('select: '+id)
     this.selectedUserId = id
   }
+
+  
 
 }
