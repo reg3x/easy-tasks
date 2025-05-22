@@ -1,3 +1,7 @@
+@if(addingNewTask==true){
+    <app-new-task (cancelNewTask)="onCancelNewTask()"/>
+}
+
 <section id="tasks">
     <header>
         <h2>{{user.name}}' Tasks</h2>

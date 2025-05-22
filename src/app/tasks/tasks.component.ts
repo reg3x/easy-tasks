@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
+import { NewTaskComponent } from './new-task/new-task.component';
 import { User } from '../user/user.model';
 
 
@@ -31,11 +32,12 @@ const dummyTasks = [
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
+  addingNewTask = false;
   tasks = dummyTasks;
   @Input({ required: true }) user!: User;
 
@@ -44,11 +46,17 @@ export class TasksComponent {
   }
 
   onAddTask() {
+    this.addingNewTask = true;
     console.log('Task added');
   }
 
   onComplete(taskId: string) {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
+  }
+
+  onCancelNewTask() {
+    console.log('Canceling new task');
+    this.addingNewTask = false;
   }
 
 }
