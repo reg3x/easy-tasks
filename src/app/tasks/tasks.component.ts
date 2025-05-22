@@ -36,14 +36,19 @@ const dummyTasks = [
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
+  tasks = dummyTasks;
   @Input({ required: true }) user!: User;
 
   getSelectedUserTasks(userId: string) {
-    return dummyTasks.filter((task) => task.userId === userId);
+    return this.tasks.filter((task) => task.userId === userId);
   }
 
   onAddTask() {
     console.log('Task added');
+  }
+
+  onComplete(taskId: string) {
+    this.tasks = this.tasks.filter((task) => task.id !== taskId);
   }
 
 }

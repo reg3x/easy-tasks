@@ -10,7 +10,10 @@
     <ul>
         @for(task of getSelectedUserTasks(user.id); track task.id){
             <li>
-               <app-task [user]="user" [task]="task"/> 
+               <app-task
+               (complete)="onComplete($event)"
+               [user]="user"
+               [task]="task"/> 
             </li>
         }
     </ul>
